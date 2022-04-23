@@ -49,23 +49,24 @@ title varchar(100) not null,
 created_at date default current_date(),
 updated_at date default current_date(),
 descripcion  text not null,
+deletable boolean,
 IdUser int,
 IdCategory int,
 constraint FK_IdUser_userr foreign key (IdUser) references userr(id),
 constraint FK_IdCategory_category foreign key (IdCategory) references category(id)
 );
 
-insert into note(title, created_at, updated_at, descripcion, IdUser, IdCategory) 
-values("title 1", default, default, "descrip 1", 1, 10),
-("title 2", default, default, "descrip 2", 2, 9),
-("title 3", default, default, "descrip 3", 3, 8),
-("title 4", default, default, "descrip 4", 4, 7),
-("title 5", default, default, "descrip 5", 5, 6),
-("title 6", default, default, "descrip 6", 6, 5),
-("title 7", default, default, "descrip 7", 7, 4),
-("title 8", default, default, "descrip 8", 8, 3),
-("title 9", default, default, "descrip 9", 9, 2),
-("title 10", default, default, "descrip 10", 10, 1);
+insert into note(title, created_at, updated_at, descripcion, deletable, IdUser, IdCategory) 
+values("title 1", default, default, "descrip 1", 1, 1, 10),
+("title 2", default, default, "descrip 2", 0, 2, 9),
+("title 3", default, default, "descrip 3", 1, 3, 8),
+("title 4", default, default, "descrip 4", 0, 4, 7),
+("title 5", default, default, "descrip 5", 1,5, 6),
+("title 6", default, default, "descrip 6", 0, 6, 5),
+("title 7", default, default, "descrip 7", 1, 7, 4),
+("title 8", default, default, "descrip 8", 0, 8, 3),
+("title 9", default, default, "descrip 9", 1, 9, 2),
+("title 10", default, default, "descrip 10", 0, 10, 1);
 
 drop table if exists category_note;
 create table category_note(
